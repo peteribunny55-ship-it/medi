@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏥 Medi Hospital Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 12px;
+        }
+        .main-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            width: 100%;
+            max-width: 520px;
+        }
+        .card-header-banner {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .badge-live {
+            background-color: #22c55e;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.3); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .action-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 16px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 14px;
+            transition: transform 0.2s;
+        }
+        .action-card:hover {
+            transform: translateY(-2px);
+        }
+        .btn-custom-primary {
+            background-color: #0284c7;
+            color: white;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: 12px;
+            border: none;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-custom-primary:hover {
+            background-color: #0369a1;
+            color: white;
+        }
+        .btn-custom-secondary {
+            background-color: #ffffff;
+            color: #0f172a;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-custom-secondary:hover {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-card">
+        <div class="card-header-banner">
+            <h2 class="fw-bold mb-1"><i class="bi bi-hospital"></i> Medi Hospital</h2>
+            <p class="mb-0 opacity-90 small">Clinical Operations & Patient Management</p>
+            <div class="badge-live">
+                <span class="pulse-dot"></span> Online & Operational
+            </div>
+        </div>
+
+        <div class="p-4">
+            <div class="action-card">
+                <h6 class="fw-bold mb-1 text-dark"><i class="bi bi-github text-primary me-1"></i> GitHub Repository</h6>
+                <p class="small text-muted mb-3">Complete source code, setup scripts, and database modules ready for deployment.</p>
+                <a href="https://github.com/peteribunny55-ship-it/medi" target="_blank" class="btn-custom-primary">
+                    <i class="bi bi-box-arrow-up-right"></i> Open GitHub Repository
+                </a>
+            </div>
+
+            <div class="action-card">
+                <h6 class="fw-bold mb-1 text-dark"><i class="bi bi-cloud-check-fill text-success me-1"></i> Streamlit Cloud Hosting</h6>
+                <p class="small text-muted mb-3">Host the interactive Streamlit Python app for free with full WebSocket support on Streamlit Community Cloud.</p>
+                <a href="https://share.streamlit.io" target="_blank" class="btn-custom-secondary">
+                    <i class="bi bi-rocket-takeoff"></i> Launch on Streamlit Cloud
+                </a>
+            </div>
+
+            <div class="action-card mb-0">
+                <h6 class="fw-bold mb-1 text-dark"><i class="bi bi-phone-vibrate text-info me-1"></i> Connect Mobile Phone (Wi-Fi)</h6>
+                <ol class="small text-muted ps-3 mb-0">
+                    <li class="mb-1">Double click <code>deploy_mobile.bat</code> on your PC.</li>
+                    <li class="mb-1">Connect your mobile phone to the same Wi-Fi network.</li>
+                    <li class="mb-0">Enter the Network URL printed in terminal into Safari or Chrome.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="p-3 bg-light border-top text-center text-muted small">
+            Medi Hospital Platform • Mobile Optimized Deployment
+        </div>
+    </div>
+</body>
+</html>
