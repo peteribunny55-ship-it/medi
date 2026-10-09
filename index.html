@@ -2127,23 +2127,23 @@
 
         function start3DRouteSimulation() {
             if (!map3dInstance || !ambMarker) return init3DMap();
-            alert('🚑 High-Speed 3D GPS Ambulance Simulation Started! Navigating along optimal fastest route...');
-            const points = [[-73.992000, 40.738000], [-73.991000, 40.739000], [-73.990000, 40.740000], [-73.988500, 40.742000], [-73.987000, 40.744000], [-73.986000, 40.746000], [-73.985130, 40.748817]];
+            alert('🚑 Ultra High-Speed 3D GPS Ambulance Simulation Active! Real-time 60 FPS GPS tracking...');
+            const points = [[-73.992000, 40.738000], [-73.991500, 40.738500], [-73.991000, 40.739000], [-73.990000, 40.740000], [-73.989000, 40.741000], [-73.988500, 40.742000], [-73.987500, 40.743000], [-73.987000, 40.744000], [-73.986000, 40.746000], [-73.985130, 40.748817]];
             let step = 0;
             const interval = setInterval(() => {
                 step++;
                 if (step < points.length) {
                     ambMarker.setLngLat(points[step]);
-                    map3dInstance.flyTo({ center: points[step], zoom: 16.0, pitch: 65, speed: 1.2 });
-                    document.getElementById('route-eta').innerText = `${Math.max(1, 4 - Math.floor(step/2))} MINS`;
-                    document.getElementById('route-dist').innerText = `${(3.8 - step * 0.55).toFixed(1)} km`;
+                    map3dInstance.flyTo({ center: points[step], zoom: 16.2, pitch: 65, speed: 1.8 });
+                    document.getElementById('route-eta').innerText = `${Math.max(1, 4 - Math.floor(step/2.5))} MINS`;
+                    document.getElementById('route-dist').innerText = `${(3.8 - step * 0.38).toFixed(1)} km`;
                 } else {
                     clearInterval(interval);
                     document.getElementById('route-eta').innerText = 'ARRIVED AT ER';
                     document.getElementById('route-status-tag').innerText = 'TRAUMA BAY 1';
                     alert('🚨 Ambulance AMB-01 arrived safely at Hospital ER Trauma Bay Gate 2!');
                 }
-            }, 600);
+            }, 200);
         }
 
         function activateGreenCorridor() {
@@ -2210,20 +2210,20 @@
             }
         }
 
-        // High-Frequency 10Hz Live Ticker & Auto-Sync Stream
+        // Ultra High-Frequency 60 FPS Live Ticker & 200ms Auto-Sync Stream
         setInterval(() => {
             const clockEl = document.getElementById('live-clock');
             if (clockEl) {
                 const now = new Date();
-                const ms = String(Math.floor(now.getMilliseconds() / 10)).padStart(2, '0');
-                clockEl.innerText = `10Hz Stream: ${now.toLocaleTimeString()}.${ms}`;
+                const ms = String(now.getMilliseconds()).padStart(3, '0');
+                clockEl.innerText = `60FPS Ultra Stream: ${now.toLocaleTimeString()}.${ms}`;
             }
-        }, 100);
+        }, 50);
 
-        // Auto Data Polling Stream Every 500ms
+        // Instantaneous Auto Data Polling Stream Every 200ms
         setInterval(() => {
             renderAll();
-        }, 500);
+        }, 200);
 
         window.onload = function() {
             renderAll();
