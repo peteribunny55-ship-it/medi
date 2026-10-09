@@ -1,0 +1,136 @@
+:root {
+  --navy-900: #0B2545;
+  --navy-800: #13315C;
+  --navy-700: #1B4079;
+  --navy-600: #2C5DA8;
+  --blue-500: #3D7EDB;
+  --blue-400: #5B9BD5;
+  --blue-100: #E8F0FB;
+  --accent-teal: #14B8A6;
+  --warn: #F59E0B;
+  --danger: #EF4444;
+  --success: #10B981;
+  --bg: #F6F9FC;
+  --card: #FFFFFF;
+  --text: #1F2937;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+}
+
+html, body, [class*="css"]  {
+  font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+section[data-testid="stSidebar"] {
+  background: linear-gradient(180deg, var(--navy-900), var(--navy-700));
+  color: #FFFFFF;
+}
+
+section[data-testid="stSidebar"] * { color: #FFFFFF; }
+section[data-testid="stSidebar"] .stSelectbox label,
+section[data-testid="stSidebar"] .stRadio label { color: #E5E7EB; }
+section[data-testid="stSidebar"] .stButton>button {
+  background: var(--blue-500); color: #fff; border: none; border-radius: 8px;
+}
+section[data-testid="stSidebar"] .stButton>button:hover { background: var(--navy-600); }
+
+.metric-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--blue-500);
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-shadow: 0 1px 2px rgba(11,37,69,0.05);
+  margin-bottom: 12px;
+}
+.metric-card .m-title { color: var(--muted); font-size: 0.85rem; letter-spacing: 0.3px; }
+.metric-card .m-value { font-size: 1.8rem; font-weight: 700; color: var(--navy-800); margin-top: 4px; }
+.metric-card .m-delta { font-size: 0.85rem; margin-top: 4px; }
+.metric-card.occup { border-left-color: #14B8A6; }
+.metric-card.alert { border-left-color: var(--danger); }
+.metric-card.warn { border-left-color: var(--warn); }
+.metric-card.info { border-left-color: var(--blue-500); }
+
+.status-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2px;
+}
+.status-available, .status-completed, .status-done, .status-confirmed, .status-resolved, .status-discharged { background: #D1FAE5; color: #065F46; }
+.status-occupied, .status-inprogress, .status-admitted, .status-scheduled, .status-open { background: #DBEAFE; color: #1E40AF; }
+.status-waiting, .status-pending, .status-maintenance, .status-dischargepending, .status-requested { background: #FEF3C7; color: #92400E; }
+.status-called, .status-intransfer { background: #E0E7FF; color: #3730A3; }
+.status-missed, .status-cancelled, .status-rejected { background: #FEE2E2; color: #991B1B; }
+.status-missed::before { content: "⚠ "; }
+.status-alert { background: #FEE2E2; color: #991B1B; font-weight: 700; }
+
+.live-badge { display: inline-block; padding: 2px 8px; border-radius: 10px;
+  font-size: 0.75rem; font-weight: 700; margin-left: 6px; }
+.live-badge.live { background: #D1FAE5; color: #065F46; }
+.live-badge.sim  { background: #FFEDD5; color: #9A3412; }
+
+.kpi-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.prototype-disclaimer {
+  background: #FFFBEB;
+  border-left: 5px solid var(--warn);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #78350F;
+  margin-bottom: 18px;
+}
+.prototype-disclaimer strong { color: #92400E; }
+
+.role-header {
+  background: linear-gradient(90deg, var(--navy-800), var(--navy-600));
+  color: #fff; padding: 14px 20px; border-radius: 10px;
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 14px;
+}
+.role-header h1 { margin: 0; font-size: 1.35rem; color: #fff; }
+.role-header .sub { opacity: 0.85; font-size: 0.85rem; }
+
+.stDataFrame, .stTable { border-radius: 8px; overflow: hidden; }
+
+[data-testid="stMetric"] {
+  background: #fff; padding: 10px 14px; border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+button[kind="primary"] {
+  background: var(--navy-700); color: #fff; border: none;
+}
+button[kind="primary"]:hover { background: var(--navy-800); }
+
+.download-btn-container { margin: 8px 0; }
+
+/* Mobile Viewport & Touch Enhancements */
+@media (max-width: 768px) {
+  .role-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 12px 14px;
+  }
+  .role-header h1 {
+    font-size: 1.15rem;
+  }
+  .metric-card {
+    padding: 12px 14px;
+    margin-bottom: 8px;
+  }
+  .metric-card .m-value {
+    font-size: 1.4rem;
+  }
+  .stButton > button {
+    min-height: 42px;
+    width: 100%;
+  }
+  .stDataFrame, .stTable {
+    overflow-x: auto;
+    display: block;
+  }
+}
+
