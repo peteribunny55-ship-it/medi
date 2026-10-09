@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏥 Medi Hospital Platform - All-in-One Operations System</title>
+    <title>🏥 Medi Hospital Platform - Advanced Operations & Emergency System</title>
 
-    <!-- CDNs: Bootstrap 5.3, Bootstrap Icons, Chart.js, MapLibre GL JS for 3D Real Navigation -->
+    <!-- CDNs: Bootstrap 5.3, Bootstrap Icons, Chart.js, MapLibre GL JS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
-    <!-- MapLibre GL JS for 3D Map View -->
+    <!-- MapLibre GL JS for 3D Real Map -->
     <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
     <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
 
@@ -19,78 +19,81 @@
             --primary-blue: #0284c7;
             --primary-dark: #0369a1;
             --accent-teal: #0d9488;
-            --bg-light: #f8fafc;
-            --sidebar-width: 260px;
+            --bg-mesh: radial-gradient(at 0% 0%, rgba(224, 242, 254, 0.7) 0px, transparent 50%),
+                             radial-gradient(at 100% 0%, rgba(243, 232, 255, 0.6) 0px, transparent 50%),
+                             radial-gradient(at 100% 100%, rgba(220, 252, 231, 0.5) 0px, transparent 50%),
+                             radial-gradient(at 0% 100%, rgba(254, 226, 226, 0.5) 0px, transparent 50%),
+                             #f8fafc;
+            --sidebar-width: 270px;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-light);
-            color: #1e293b;
+            background: var(--bg-mesh);
+            background-attachment: fixed;
+            color: #0f172a;
             overflow-x: hidden;
             margin: 0;
             padding: 0;
         }
 
-        /* Sidebar Navigation */
+        /* Sidebar Styling */
         #sidebar {
             width: var(--sidebar-width);
             height: 100vh;
             position: fixed;
             top: 0;
             left: 0;
-            background: #0f172a;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
             color: #f8fafc;
             z-index: 1000;
             transition: all 0.3s ease;
             overflow-y: auto;
+            box-shadow: 4px 0 25px rgba(0, 0, 0, 0.15);
         }
 
         #sidebar .brand {
-            padding: 20px 18px;
+            padding: 22px 20px;
             font-size: 1.25rem;
-            font-weight: 700;
+            font-weight: 800;
             color: #ffffff;
-            border-bottom: 1px solid #1e293b;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
-            gap: 10px;
-            background: #0284c7;
+            gap: 12px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
         }
 
         #sidebar .nav-category {
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             color: #64748b;
-            padding: 16px 20px 6px 20px;
+            padding: 18px 20px 6px 20px;
             font-weight: 700;
         }
 
         #sidebar .nav-link {
             color: #94a3b8;
-            padding: 10px 20px;
+            padding: 11px 20px;
             font-size: 0.92rem;
             display: flex;
             align-items: center;
             gap: 12px;
             transition: all 0.2s;
-            border-left: 3px solid transparent;
+            border-left: 4px solid transparent;
             cursor: pointer;
             text-decoration: none;
+            font-weight: 500;
         }
 
         #sidebar .nav-link:hover, #sidebar .nav-link.active {
             color: #ffffff;
-            background: #1e293b;
-            border-left-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.08);
+            border-left-color: #38bdf8;
         }
 
-        #sidebar .nav-link i {
-            font-size: 1.1rem;
-        }
-
-        /* Main Content Wrapper */
+        /* Main Content Styling */
         #main-content {
             margin-left: var(--sidebar-width);
             min-height: 100vh;
@@ -98,11 +101,35 @@
             padding-bottom: 60px;
         }
 
+        /* Hero Glassmorphism Header */
+        .hero-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0284c7 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 20px 35px -10px rgba(2, 132, 199, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
         /* Top Navbar */
         .top-navbar {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid #e2e8f0;
-            padding: 12px 24px;
+            padding: 14px 28px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -111,27 +138,29 @@
             z-index: 990;
         }
 
-        .kpi-card {
-            background: #ffffff;
+        /* Glassmorphic Cards */
+        .card-glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s ease;
+        }
+
+        .card-glass:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(2, 132, 199, 0.12);
+        }
+
+        .kpi-icon {
+            width: 52px;
+            height: 52px;
             border-radius: 14px;
-            padding: 20px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            transition: transform 0.2s;
-        }
-
-        .kpi-card:hover {
-            transform: translateY(-2px);
-        }
-
-        .kpi-card .kpi-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
         }
 
         .kpi-blue { background: #e0f2fe; color: #0284c7; }
@@ -140,14 +169,14 @@
         .kpi-red { background: #fee2e2; color: #dc2626; }
 
         .bed-box {
-            border-radius: 10px;
-            padding: 12px;
+            border-radius: 12px;
+            padding: 14px;
             text-align: center;
-            font-weight: 600;
-            font-size: 0.85rem;
+            font-weight: 700;
+            font-size: 0.88rem;
             cursor: pointer;
             transition: all 0.2s;
-            border: 1px solid transparent;
+            border: 2px solid transparent;
         }
 
         .bed-available { background: #dcfce7; color: #15803d; border-color: #86efac; }
@@ -156,44 +185,33 @@
         .bed-maintenance { background: #f1f5f9; color: #64748b; border-color: #cbd5e1; }
 
         .token-badge {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            padding: 6px 14px;
-            border-radius: 8px;
-            background: #0284c7;
+            padding: 6px 16px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #ffffff;
             display: inline-block;
+            box-shadow: 0 6px 15px rgba(2, 132, 199, 0.3);
         }
 
-        .tab-section {
-            display: none;
+        .tab-section { display: none; }
+        .tab-section.active { display: block; }
+
+        .pulse-badge {
+            animation: pulse-ring 1.8s infinite;
         }
 
-        .tab-section.active {
-            display: block;
+        @keyframes pulse-ring {
+            0% { transform: scale(0.98); opacity: 1; }
+            50% { transform: scale(1.03); opacity: 0.8; }
+            100% { transform: scale(0.98); opacity: 1; }
         }
 
-        .pulse-dot-badge {
-            animation: pulse-bg 1.5s infinite;
-        }
-
-        @keyframes pulse-bg {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        /* Mobile Adjustments */
         @media (max-width: 991.98px) {
-            #sidebar {
-                margin-left: calc(-1 * var(--sidebar-width));
-            }
-            #sidebar.show {
-                margin-left: 0;
-            }
-            #main-content {
-                margin-left: 0;
-            }
+            #sidebar { margin-left: calc(-1 * var(--sidebar-width)); }
+            #sidebar.show { margin-left: 0; }
+            #main-content { margin-left: 0; }
         }
     </style>
 </head>
@@ -205,19 +223,19 @@
             <i class="bi bi-hospital fs-3"></i>
             <div>
                 <div style="line-height: 1.1;">Medi Hospital</div>
-                <small style="font-size: 0.68rem; font-weight: 400; opacity: 0.85;">Platform v2.5 • Mobile</small>
+                <small style="font-size: 0.68rem; font-weight: 400; opacity: 0.85;">Platform v3.0 • Live Real</small>
             </div>
         </div>
 
         <div class="nav-category">Main Overview</div>
         <a class="nav-link active" onclick="switchTab('dashboard')">
-            <i class="bi bi-speedometer2"></i> Dashboard
+            <i class="bi bi-speedometer2"></i> Executive Dashboard
         </a>
         <a class="nav-link" onclick="switchTab('patients')">
             <i class="bi bi-people"></i> Patient Registry
         </a>
         <a class="nav-link" onclick="switchTab('queue')">
-            <i class="bi bi-hash"></i> Triage & Queue
+            <i class="bi bi-hash"></i> Triage & Voice Queue
         </a>
 
         <div class="nav-category">Clinical Operations</div>
@@ -225,7 +243,7 @@
             <i class="bi bi-calendar-event"></i> Appointments
         </a>
         <a class="nav-link" onclick="switchTab('beds')">
-            <i class="bi bi-door-open"></i> Beds & ICU Ward
+            <i class="bi bi-door-open"></i> Beds & ICU Allocation
         </a>
         <a class="nav-link" onclick="switchTab('emergency')">
             <i class="bi bi-exclamation-triangle"></i> Emergency (ER)
@@ -236,21 +254,21 @@
 
         <div class="nav-category">Diagnostics & Services</div>
         <a class="nav-link" onclick="switchTab('pharmacy')">
-            <i class="bi bi-capsule"></i> Pharmacy & Stock
+            <i class="bi bi-capsule"></i> Pharmacy & Inventory
         </a>
         <a class="nav-link" onclick="switchTab('lab')">
-            <i class="bi bi-journal-medical"></i> Laboratory
+            <i class="bi bi-journal-medical"></i> Laboratory Diagnostics
         </a>
         <a class="nav-link" onclick="switchTab('blood_bank')">
             <i class="bi bi-droplet-fill text-danger"></i> Blood Bank & Donors
         </a>
         <a class="nav-link" onclick="switchTab('ambulance')">
-            <i class="bi bi-compass-fill text-warning"></i> 3D Ambulance Map
+            <i class="bi bi-compass-fill text-warning"></i> 3D GPS Ambulance
         </a>
 
         <div class="nav-category">Management & Analytics</div>
         <a class="nav-link" onclick="switchTab('staff')">
-            <i class="bi bi-person-badge"></i> Staff Scheduling
+            <i class="bi bi-person-badge"></i> Staff Roster
         </a>
         <a class="nav-link" onclick="switchTab('reports')">
             <i class="bi bi-graph-up-arrow"></i> Reports & Analytics
@@ -272,15 +290,18 @@
             </div>
 
             <div class="d-flex align-items-center gap-2">
-                <button class="btn btn-outline-primary btn-sm rounded-pill px-3" onclick="openModal('addPatientModal')">
-                    <i class="bi bi-plus-lg me-1"></i> New Patient
+                <button class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold" onclick="openModal('addPatientModal')">
+                    <i class="bi bi-person-plus me-1"></i> Register Patient
+                </button>
+                <button class="btn btn-success btn-sm rounded-pill px-3 fw-bold" onclick="exportDataCSV()">
+                    <i class="bi bi-file-earmark-spreadsheet me-1"></i> Export CSV
                 </button>
                 <div class="dropdown">
                     <button class="btn btn-light btn-sm rounded-circle border p-2" data-bs-toggle="dropdown">
                         <i class="bi bi-person-circle fs-5"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                        <li><h6 class="dropdown-header">Logged in as Dr. Alex Miller</h6></li>
+                        <li><h6 class="dropdown-header">Dr. Alex Miller (Chief Admin)</h6></li>
                         <li><a class="dropdown-item" onclick="switchTab('settings')"><i class="bi bi-gear me-2"></i> Settings</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" onclick="resetDatabase()"><i class="bi bi-arrow-counterclockwise me-2"></i> Reset Demo Data</a></li>
@@ -293,39 +314,56 @@
 
             <!-- TAB 1: DASHBOARD -->
             <section id="tab-dashboard" class="tab-section active">
+                <div class="hero-banner">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <span class="badge bg-info text-dark px-3 py-2 rounded-pill fw-bold mb-2">
+                                <i class="bi bi-broadcast me-1"></i> LIVE CLINICAL OPERATIONS ACTIVE
+                            </span>
+                            <h2 class="fw-extrabold mb-1">Medi Hospital Operations Dashboard</h2>
+                            <p class="text-light opacity-85 mb-0">Real-time triage control, ICU bed matrix, emergency response & diagnostic workflow.</p>
+                        </div>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <button class="btn btn-light text-primary fw-bold rounded-pill px-4 py-2 shadow" onclick="announceVoiceQueue()">
+                                <i class="bi bi-megaphone-fill me-1"></i> Announce Voice Queue
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row g-3 mb-4">
                     <div class="col-6 col-md-3">
-                        <div class="kpi-card d-flex align-items-center justify-content-between">
+                        <div class="card-glass p-3 d-flex align-items-center justify-content-between">
                             <div>
-                                <span class="text-muted small fw-semibold">Total Patients</span>
-                                <h3 class="fw-bold mb-0 text-dark" id="kpi-total-patients">128</h3>
+                                <span class="text-muted small fw-semibold">Total Registered</span>
+                                <h3 class="fw-bold mb-0 text-dark" id="kpi-total-patients">0</h3>
                             </div>
                             <div class="kpi-icon kpi-blue"><i class="bi bi-people"></i></div>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
-                        <div class="kpi-card d-flex align-items-center justify-content-between">
+                        <div class="card-glass p-3 d-flex align-items-center justify-content-between">
                             <div>
-                                <span class="text-muted small fw-semibold">Active Queue</span>
-                                <h3 class="fw-bold mb-0 text-dark" id="kpi-queue-count">14</h3>
+                                <span class="text-muted small fw-semibold">Active Waiting Queue</span>
+                                <h3 class="fw-bold mb-0 text-dark" id="kpi-queue-count">0</h3>
                             </div>
                             <div class="kpi-icon kpi-amber"><i class="bi bi-clock-history"></i></div>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
-                        <div class="kpi-card d-flex align-items-center justify-content-between">
+                        <div class="card-glass p-3 d-flex align-items-center justify-content-between">
                             <div>
-                                <span class="text-muted small fw-semibold">Beds Occupied</span>
-                                <h3 class="fw-bold mb-0 text-dark" id="kpi-bed-occupancy">82%</h3>
+                                <span class="text-muted small fw-semibold">Bed Occupancy</span>
+                                <h3 class="fw-bold mb-0 text-dark" id="kpi-bed-occupancy">0%</h3>
                             </div>
                             <div class="kpi-icon kpi-green"><i class="bi bi-door-open"></i></div>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
-                        <div class="kpi-card d-flex align-items-center justify-content-between">
+                        <div class="card-glass p-3 d-flex align-items-center justify-content-between">
                             <div>
-                                <span class="text-muted small fw-semibold">ER Priority Cases</span>
-                                <h3 class="fw-bold mb-0 text-dark" id="kpi-er-cases">3</h3>
+                                <span class="text-muted small fw-semibold">ER Trauma Cases</span>
+                                <h3 class="fw-bold mb-0 text-dark" id="kpi-er-cases">0</h3>
                             </div>
                             <div class="kpi-icon kpi-red"><i class="bi bi-exclamation-octagon"></i></div>
                         </div>
@@ -334,10 +372,10 @@
 
                 <div class="row g-4 mb-4">
                     <div class="col-lg-8">
-                        <div class="card border-0 shadow-sm rounded-4 p-3">
+                        <div class="card-glass p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-graph-up text-primary me-2"></i> Patient Flow & Triage Trend</h6>
-                                <span class="badge bg-light text-dark border">Realtime</span>
+                                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-graph-up text-primary me-2"></i> Realtime Triage Flow & Emergency Analytics</h6>
+                                <span class="badge bg-success">Live Updates</span>
                             </div>
                             <div style="height: 280px;">
                                 <canvas id="chartPatientTrend"></canvas>
@@ -345,7 +383,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="card border-0 shadow-sm rounded-4 p-3 h-100">
+                        <div class="card-glass p-4 h-100">
                             <h6 class="fw-bold mb-3 text-dark"><i class="bi bi-pie-chart text-success me-2"></i> Ward Bed Distribution</h6>
                             <div style="height: 220px;" class="d-flex justify-content-center">
                                 <canvas id="chartBedPie"></canvas>
@@ -356,10 +394,10 @@
 
                 <div class="row g-4">
                     <div class="col-lg-6">
-                        <div class="card border-0 shadow-sm rounded-4 p-3">
+                        <div class="card-glass p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-broadcast text-danger me-2"></i> Live Triage Queue</h6>
-                                <button class="btn btn-sm btn-primary" onclick="callNextToken()"><i class="bi bi-megaphone me-1"></i> Call Next</button>
+                                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-broadcast text-danger me-2"></i> Voice-Activated Triage Queue</h6>
+                                <button class="btn btn-sm btn-primary fw-bold" onclick="callNextToken()"><i class="bi bi-megaphone me-1"></i> Call Next Token</button>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-hover align-middle mb-0">
@@ -368,7 +406,7 @@
                                             <th>Token</th>
                                             <th>Patient Name</th>
                                             <th>Department</th>
-                                            <th>Triage</th>
+                                            <th>Wait Time</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -379,43 +417,43 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <div class="card border-0 shadow-sm rounded-4 p-3">
-                            <h6 class="fw-bold mb-3 text-dark"><i class="bi bi-lightning-charge text-warning me-2"></i> Quick Action Portal</h6>
+                        <div class="card-glass p-4">
+                            <h6 class="fw-bold mb-3 text-dark"><i class="bi bi-lightning-charge text-warning me-2"></i> Operational Actions</h6>
                             <div class="row g-2">
                                 <div class="col-6 col-md-4">
-                                    <button class="btn btn-outline-primary w-100 p-3 text-center rounded-3" onclick="openModal('addPatientModal')">
+                                    <button class="btn btn-outline-primary w-100 p-3 text-center rounded-3 fw-bold" onclick="openModal('addPatientModal')">
                                         <i class="bi bi-person-plus fs-3 d-block mb-1"></i>
-                                        <small class="fw-semibold">Add Patient</small>
+                                        <small>New Patient</small>
                                     </button>
                                 </div>
                                 <div class="col-6 col-md-4">
-                                    <button class="btn btn-outline-success w-100 p-3 text-center rounded-3" onclick="switchTab('queue')">
-                                        <i class="bi bi-ticket-perforated fs-3 d-block mb-1"></i>
-                                        <small class="fw-semibold">Issue Token</small>
+                                    <button class="btn btn-outline-success w-100 p-3 text-center rounded-3 fw-bold" onclick="openModal('addAppointmentModal')">
+                                        <i class="bi bi-calendar-plus fs-3 d-block mb-1"></i>
+                                        <small>Book Consult</small>
                                     </button>
                                 </div>
                                 <div class="col-6 col-md-4">
-                                    <button class="btn btn-outline-danger w-100 p-3 text-center rounded-3" onclick="switchTab('emergency')">
+                                    <button class="btn btn-outline-danger w-100 p-3 text-center rounded-3 fw-bold" onclick="openModal('addERCaseModal')">
                                         <i class="bi bi-heart-pulse fs-3 d-block mb-1"></i>
-                                        <small class="fw-semibold">ER Admit</small>
+                                        <small>ER Admit</small>
                                     </button>
                                 </div>
                                 <div class="col-6 col-md-4">
-                                    <button class="btn btn-outline-info w-100 p-3 text-center rounded-3" onclick="switchTab('beds')">
-                                        <i class="bi bi-hospital fs-3 d-block mb-1"></i>
-                                        <small class="fw-semibold">Assign Bed</small>
+                                    <button class="btn btn-outline-info w-100 p-3 text-center rounded-3 fw-bold" onclick="openModal('assignBedModal')">
+                                        <i class="bi bi-door-open fs-3 d-block mb-1"></i>
+                                        <small>Assign Bed</small>
                                     </button>
                                 </div>
                                 <div class="col-6 col-md-4">
-                                    <button class="btn btn-outline-warning w-100 p-3 text-center rounded-3" onclick="switchTab('pharmacy')">
-                                        <i class="bi bi-capsule fs-3 d-block mb-1"></i>
-                                        <small class="fw-semibold">Pharmacy</small>
+                                    <button class="btn btn-outline-warning w-100 p-3 text-center rounded-3 fw-bold" onclick="openModal('addLabOrderModal')">
+                                        <i class="bi bi-journal-plus fs-3 d-block mb-1"></i>
+                                        <small>Order Lab</small>
                                     </button>
                                 </div>
                                 <div class="col-6 col-md-4">
-                                    <button class="btn btn-outline-danger w-100 p-3 text-center rounded-3" onclick="switchTab('blood_bank')">
+                                    <button class="btn btn-outline-danger w-100 p-3 text-center rounded-3 fw-bold" onclick="openModal('requestBloodModal')">
                                         <i class="bi bi-droplet-fill fs-3 d-block mb-1"></i>
-                                        <small class="fw-semibold">Blood Bank</small>
+                                        <small>Blood Order</small>
                                     </button>
                                 </div>
                             </div>
@@ -426,13 +464,13 @@
 
             <!-- TAB 2: PATIENTS -->
             <section id="tab-patients" class="tab-section">
-                <div class="card border-0 shadow-sm rounded-4 p-4">
+                <div class="card-glass p-4">
                     <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
-                        <div class="input-group style-search" style="max-width: 320px;">
+                        <div class="input-group" style="max-width: 320px;">
                             <span class="input-group-text bg-light border-end-0"><i class="bi bi-search"></i></span>
-                            <input type="text" id="searchPatients" class="form-control bg-light border-start-0" placeholder="Search by name or ID..." onkeyup="filterPatients()">
+                            <input type="text" id="searchPatients" class="form-control bg-light border-start-0" placeholder="Search patient name or ID..." onkeyup="filterPatients()">
                         </div>
-                        <button class="btn btn-primary rounded-pill px-4" onclick="openModal('addPatientModal')">
+                        <button class="btn btn-primary rounded-pill px-4 fw-bold" onclick="openModal('addPatientModal')">
                             <i class="bi bi-plus-lg me-1"></i> Add New Patient
                         </button>
                     </div>
@@ -447,7 +485,7 @@
                                     <th>Contact</th>
                                     <th>Triage Level</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <th>Real Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="patients-table-body"></tbody>
@@ -456,24 +494,24 @@
                 </div>
             </section>
 
-            <!-- TAB 3: QUEUE & TRIAGE -->
+            <!-- TAB 3: QUEUE & VOICE TRIAGE -->
             <section id="tab-queue" class="tab-section">
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <div class="card border-0 shadow-sm rounded-4 p-4 text-center">
+                        <div class="card-glass p-4 text-center">
                             <h6 class="fw-bold text-muted mb-2">NOW SERVING TOKEN</h6>
-                            <div class="token-badge fs-1 px-4 py-2 my-2 bg-primary" id="now-serving-token">T-102</div>
+                            <div class="token-badge fs-1 px-4 py-2 my-2" id="now-serving-token">T-102</div>
                             <p class="text-secondary small mb-3" id="now-serving-name">Patient: Sarah Jenkins (General OPD)</p>
-                            <button class="btn btn-success btn-lg w-100 rounded-3 mb-2" onclick="callNextToken()">
-                                <i class="bi bi-megaphone me-1"></i> Call Next Token
+                            <button class="btn btn-success btn-lg w-100 rounded-3 fw-bold mb-2 shadow" onclick="callNextToken()">
+                                <i class="bi bi-megaphone-fill me-1"></i> Call Next Token (Voice)
                             </button>
-                            <button class="btn btn-outline-secondary w-100 rounded-3" onclick="issueNewToken()">
+                            <button class="btn btn-outline-secondary w-100 rounded-3 fw-bold" onclick="issueNewToken()">
                                 <i class="bi bi-plus-circle me-1"></i> Issue New Token
                             </button>
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <div class="card-glass p-4">
                             <h6 class="fw-bold text-dark mb-3"><i class="bi bi-list-ol text-primary me-2"></i> Active Waiting Queue</h6>
                             <div class="table-responsive">
                                 <table class="table table-hover align-middle">
@@ -483,7 +521,7 @@
                                             <th>Patient Name</th>
                                             <th>Dept</th>
                                             <th>Est. Wait</th>
-                                            <th>Actions</th>
+                                            <th>Real Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody id="full-queue-table"></tbody>
@@ -496,10 +534,10 @@
 
             <!-- TAB 4: APPOINTMENTS -->
             <section id="tab-appointments" class="tab-section">
-                <div class="card border-0 shadow-sm rounded-4 p-4">
+                <div class="card-glass p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-calendar-check text-primary me-2"></i> Scheduled Consultations</h6>
-                        <button class="btn btn-primary btn-sm rounded-pill px-3" onclick="alert('Appointment booking modal initialized!')">
+                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold" onclick="openModal('addAppointmentModal')">
                             <i class="bi bi-plus-lg me-1"></i> Book Appointment
                         </button>
                     </div>
@@ -512,6 +550,7 @@
                                     <th>Assigned Doctor</th>
                                     <th>Specialty</th>
                                     <th>Status</th>
+                                    <th>Real Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="appointments-table"></tbody>
@@ -522,8 +561,13 @@
 
             <!-- TAB 5: BEDS & ICU -->
             <section id="tab-beds" class="tab-section">
-                <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
-                    <h6 class="fw-bold text-dark mb-3"><i class="bi bi-hospital text-success me-2"></i> Ward Bed Matrix Allocation</h6>
+                <div class="card-glass p-4 mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold text-dark mb-0"><i class="bi bi-hospital text-success me-2"></i> Ward Bed Matrix Allocation</h6>
+                        <button class="btn btn-success btn-sm rounded-pill px-3 fw-bold" onclick="openModal('assignBedModal')">
+                            <i class="bi bi-door-open-fill me-1"></i> Assign Patient to Bed
+                        </button>
+                    </div>
                     <div class="d-flex gap-3 mb-3 flex-wrap">
                         <span class="badge bed-available"><i class="bi bi-check-circle me-1"></i> Available</span>
                         <span class="badge bed-occupied"><i class="bi bi-x-circle me-1"></i> Occupied</span>
@@ -538,32 +582,34 @@
             <section id="tab-emergency" class="tab-section">
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <div class="card border-0 shadow-sm rounded-4 p-4 bg-danger text-white">
+                        <div class="card-glass p-4 bg-danger text-white">
                             <h5 class="fw-bold"><i class="bi bi-exclamation-triangle-fill me-2"></i> Emergency Triage Form</h5>
                             <p class="small opacity-90 mb-3">Immediate Red/Yellow code triage intake</p>
-                            <div class="mb-2">
-                                <label class="form-label small">Patient Name</label>
-                                <input type="text" id="er-name" class="form-control" placeholder="John Doe">
-                            </div>
-                            <div class="mb-2">
-                                <label class="form-label small">Priority Category</label>
-                                <select id="er-priority" class="form-select">
-                                    <option value="Red (Critical)">Red - Critical / Trauma</option>
-                                    <option value="Yellow (Urgent)">Yellow - Urgent</option>
-                                    <option value="Green (Non-Urgent)">Green - Non-Urgent</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label small">Chief Complaint</label>
-                                <textarea id="er-complaint" class="form-control" rows="2" placeholder="Chest pain, dyspnea..."></textarea>
-                            </div>
-                            <button class="btn btn-light text-danger fw-bold w-100" onclick="addERCase()">
-                                Register Emergency Case
-                            </button>
+                            <form id="formAddERCase" onsubmit="saveERCase(event)">
+                                <div class="mb-2">
+                                    <label class="form-label small">Patient Name</label>
+                                    <input type="text" id="er-name" class="form-control" placeholder="John Doe" required>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label small">Priority Category</label>
+                                    <select id="er-priority" class="form-select">
+                                        <option value="Red (Critical)">Red - Critical / Trauma</option>
+                                        <option value="Yellow (Urgent)">Yellow - Urgent</option>
+                                        <option value="Green (Non-Urgent)">Green - Non-Urgent</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small">Chief Complaint</label>
+                                    <textarea id="er-complaint" class="form-control" rows="2" placeholder="Chest pain, dyspnea..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-light text-danger fw-bold w-100 py-2 shadow">
+                                    Register Emergency Case
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <div class="card-glass p-4">
                             <h6 class="fw-bold text-dark mb-3"><i class="bi bi-activity text-danger me-2"></i> Active Emergency Board</h6>
                             <div class="table-responsive">
                                 <table class="table table-hover align-middle">
@@ -574,6 +620,7 @@
                                             <th>Priority</th>
                                             <th>Complaint</th>
                                             <th>Status</th>
+                                            <th>Real Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody id="er-cases-table"></tbody>
@@ -586,7 +633,7 @@
 
             <!-- TAB 7: PHARMACY -->
             <section id="tab-pharmacy" class="tab-section">
-                <div class="card border-0 shadow-sm rounded-4 p-4">
+                <div class="card-glass p-4">
                     <h6 class="fw-bold text-dark mb-3"><i class="bi bi-capsule text-warning me-2"></i> Medication Stock & Inventory</h6>
                     <div class="table-responsive">
                         <table class="table table-hover align-middle">
@@ -597,7 +644,7 @@
                                     <th>Stock Level</th>
                                     <th>Unit Price</th>
                                     <th>Reorder Alert</th>
-                                    <th>Action</th>
+                                    <th>Real Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="pharmacy-table"></tbody>
@@ -608,8 +655,13 @@
 
             <!-- TAB 8: LABORATORY -->
             <section id="tab-lab" class="tab-section">
-                <div class="card border-0 shadow-sm rounded-4 p-4">
-                    <h6 class="fw-bold text-dark mb-3"><i class="bi bi-journal-medical text-purple me-2"></i> Diagnostic Test Requests</h6>
+                <div class="card-glass p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold text-dark mb-0"><i class="bi bi-journal-medical text-purple me-2"></i> Diagnostic Test Requests</h6>
+                        <button class="btn btn-primary btn-sm rounded-pill px-3 fw-bold" onclick="openModal('addLabOrderModal')">
+                            <i class="bi bi-plus-lg me-1"></i> Order Lab Test
+                        </button>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-hover align-middle">
                             <thead class="table-light">
@@ -619,6 +671,7 @@
                                     <th>Test Requested</th>
                                     <th>Requested By</th>
                                     <th>Status</th>
+                                    <th>Real Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="lab-table"></tbody>
@@ -649,10 +702,10 @@
 
                 <div class="row g-3 mb-4" id="blood-bank-grid"></div>
 
-                <div class="card border-0 shadow-sm rounded-4 p-4">
+                <div class="card-glass p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h6 class="fw-bold text-dark mb-0"><i class="bi bi-people-fill text-primary me-2"></i> Registered Blood Donors Directory</h6>
-                        <span class="badge bg-light text-dark border" id="donor-count-badge">4 Donors Active</span>
+                        <span class="badge bg-light text-dark border" id="donor-count-badge">0 Donors Active</span>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover align-middle mb-0">
@@ -677,23 +730,23 @@
             <section id="tab-ambulance" class="tab-section">
                 <div class="row g-4 mb-4">
                     <div class="col-lg-8">
-                        <div class="card border-0 shadow-sm rounded-4 p-3">
+                        <div class="card-glass p-3">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <div>
                                     <h6 class="fw-bold text-dark mb-0"><i class="bi bi-compass-fill text-danger me-2"></i> 3D Real GPS Ambulance Navigation Map</h6>
                                     <small class="text-muted">Interactive 3D vector map with live terrain pitch & fastest route optimization</small>
                                 </div>
-                                <span class="badge bg-danger pulse-dot-badge">● LIVE 3D NAVIGATION</span>
+                                <span class="badge bg-danger pulse-badge">● LIVE 3D NAVIGATION</span>
                             </div>
 
                             <!-- 3D Map Container -->
                             <div id="map3d" style="width: 100%; height: 420px; border-radius: 16px; overflow: hidden;" class="shadow-inner border position-relative"></div>
 
                             <div class="d-flex flex-wrap gap-2 mt-3">
-                                <button class="btn btn-primary rounded-3 btn-sm fw-bold px-3" onclick="start3DRouteSimulation()">
+                                <button class="btn btn-primary rounded-3 btn-sm fw-bold px-3 shadow" onclick="start3DRouteSimulation()">
                                     <i class="bi bi-play-fill me-1"></i> Simulate 3D Ambulance Route
                                 </button>
-                                <button class="btn btn-warning rounded-3 btn-sm fw-bold px-3" onclick="activateGreenCorridor()">
+                                <button class="btn btn-warning rounded-3 btn-sm fw-bold px-3 shadow" onclick="activateGreenCorridor()">
                                     <i class="bi bi-reception-4 me-1"></i> Activate Traffic Green Corridor
                                 </button>
                                 <button class="btn btn-dark rounded-3 btn-sm fw-bold px-3" onclick="recenterMap()">
@@ -704,7 +757,7 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <div class="card border-0 shadow-sm rounded-4 p-4 mb-3 bg-dark text-white">
+                        <div class="card-glass p-4 mb-3 bg-dark text-white">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="badge bg-danger text-uppercase fw-bold">Unit AMB-01 (ALS)</span>
                                 <span class="badge bg-success" id="route-status-tag">FASTEST ROUTE</span>
@@ -732,7 +785,7 @@
                             </div>
                         </div>
 
-                        <div class="card border-0 shadow-sm rounded-4 p-3">
+                        <div class="card-glass p-3">
                             <h6 class="fw-bold text-dark mb-2"><i class="bi bi-telephone-fill text-success me-2"></i> Direct Crew Link</h6>
                             <div class="d-flex align-items-center justify-content-between p-2 bg-light rounded-3 mb-2">
                                 <div>
@@ -747,7 +800,7 @@
                     </div>
                 </div>
 
-                <div class="card border-0 shadow-sm rounded-4 p-4">
+                <div class="card-glass p-4">
                     <h6 class="fw-bold text-dark mb-3"><i class="bi bi-truck-front text-danger me-2"></i> Ambulance Fleet Operations</h6>
                     <div class="table-responsive">
                         <table class="table table-hover align-middle mb-0">
@@ -757,7 +810,7 @@
                                     <th>Driver / Medic</th>
                                     <th>Current GPS Location</th>
                                     <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Real Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="ambulance-table"></tbody>
@@ -768,7 +821,7 @@
 
             <!-- TAB 11: OPERATING ROOMS -->
             <section id="tab-operating_rooms" class="tab-section">
-                <div class="card border-0 shadow-sm rounded-4 p-4">
+                <div class="card-glass p-4">
                     <h6 class="fw-bold text-dark mb-3"><i class="bi bi-heart-pulse text-danger me-2"></i> Operating Theater Schedule</h6>
                     <div class="table-responsive">
                         <table class="table table-hover align-middle">
@@ -779,6 +832,7 @@
                                     <th>Procedure</th>
                                     <th>Time Window</th>
                                     <th>Status</th>
+                                    <th>Real Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="ot-table"></tbody>
@@ -789,7 +843,7 @@
 
             <!-- TAB 12: STAFF -->
             <section id="tab-staff" class="tab-section">
-                <div class="card border-0 shadow-sm rounded-4 p-4">
+                <div class="card-glass p-4">
                     <h6 class="fw-bold text-dark mb-3"><i class="bi bi-person-badge text-info me-2"></i> On-Duty Medical Roster</h6>
                     <div class="table-responsive">
                         <table class="table table-hover align-middle">
@@ -800,6 +854,7 @@
                                     <th>Department</th>
                                     <th>Shift Window</th>
                                     <th>Status</th>
+                                    <th>Real Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="staff-table"></tbody>
@@ -812,13 +867,13 @@
             <section id="tab-reports" class="tab-section">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <div class="card-glass p-4">
                             <h6 class="fw-bold mb-3"><i class="bi bi-bar-chart-line me-2"></i> Monthly Admissions</h6>
                             <canvas id="chartAdmissionsMonthly" height="200"></canvas>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card border-0 shadow-sm rounded-4 p-4">
+                        <div class="card-glass p-4">
                             <h6 class="fw-bold mb-3"><i class="bi bi-currency-dollar me-2"></i> Revenue Analytics</h6>
                             <canvas id="chartRevenue" height="200"></canvas>
                         </div>
@@ -828,7 +883,7 @@
 
             <!-- TAB 14: SETTINGS -->
             <section id="tab-settings" class="tab-section">
-                <div class="card border-0 shadow-sm rounded-4 p-4 max-width-md" style="max-width: 600px;">
+                <div class="card-glass p-4 max-width-md" style="max-width: 600px;">
                     <h5 class="fw-bold text-dark mb-3"><i class="bi bi-gear me-2"></i> System Configuration</h5>
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Hospital Name</label>
@@ -838,7 +893,7 @@
                         <label class="form-label fw-semibold">Database Storage Engine</label>
                         <input type="text" class="form-control" value="HTML5 LocalStorage / SQLite Sync" readonly>
                     </div>
-                    <button class="btn btn-danger w-100 rounded-3 py-2 mt-2" onclick="resetDatabase()">
+                    <button class="btn btn-danger w-100 rounded-3 py-2 mt-2 fw-bold" onclick="resetDatabase()">
                         <i class="bi bi-arrow-counterclockwise me-1"></i> Reset All Demo Data
                     </button>
                 </div>
@@ -847,7 +902,7 @@
         </div>
     </div>
 
-    <!-- Modal: Add Patient -->
+    <!-- MODAL 1: Add Patient -->
     <div class="modal fade" id="addPatientModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
@@ -894,7 +949,128 @@
         </div>
     </div>
 
-    <!-- Modal: Register Blood Donor -->
+    <!-- MODAL 2: View Patient Details -->
+    <div class="modal fade" id="viewPatientModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0 bg-primary text-white p-3 rounded-top-4">
+                    <h5 class="modal-title fw-bold" id="vp-title"><i class="bi bi-person-vcard me-2"></i> Patient Record</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4" id="vp-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Book Appointment -->
+    <div class="modal fade" id="addAppointmentModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-primary"><i class="bi bi-calendar-plus me-2"></i> Book Consultation Appointment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formAddAppt" onsubmit="saveNewAppointment(event)">
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Patient Name</label>
+                            <input type="text" id="apt-patient" class="form-control" placeholder="e.g. Sophia Martinez" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Assigned Doctor</label>
+                            <select id="apt-doctor" class="form-select">
+                                <option value="Dr. Elena Rostova (Cardiology)">Dr. Elena Rostova (Cardiology)</option>
+                                <option value="Dr. Robert Lang (Surgery)">Dr. Robert Lang (Surgery)</option>
+                                <option value="Dr. Clara Oswald (ER)">Dr. Clara Oswald (ER)</option>
+                                <option value="Dr. Alex Miller (Internal Med)">Dr. Alex Miller (Internal Med)</option>
+                            </select>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label small fw-semibold">Date</label>
+                                <input type="date" id="apt-date" class="form-control" required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-semibold">Time Slot</label>
+                                <input type="time" id="apt-time" class="form-control" value="10:30" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2 rounded-3 fw-bold">Confirm & Book Consultation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: Order Lab Test -->
+    <div class="modal fade" id="addLabOrderModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-purple"><i class="bi bi-journal-plus me-2"></i> Request Diagnostic Test</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formAddLab" onsubmit="saveLabOrder(event)">
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Patient Name</label>
+                            <input type="text" id="lab-patient" class="form-control" placeholder="e.g. Eleanor Vance" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Test Panel</label>
+                            <select id="lab-test" class="form-select">
+                                <option value="Complete Blood Count (CBC)">Complete Blood Count (CBC)</option>
+                                <option value="Lipid Profile & HbA1c">Lipid Profile & HbA1c</option>
+                                <option value="Chest X-Ray Digital">Chest X-Ray Digital</option>
+                                <option value="MRI Brain Scan">MRI Brain Scan</option>
+                                <option value="Liver Function Panel">Liver Function Panel</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Ordering Physician</label>
+                            <input type="text" id="lab-doctor" class="form-control" value="Dr. Alex Miller" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2 rounded-3 fw-bold">Dispatch Diagnostic Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: Assign Bed -->
+    <div class="modal fade" id="assignBedModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-success"><i class="bi bi-door-open-fill me-2"></i> Assign Ward Bed</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formAssignBed" onsubmit="saveBedAssignment(event)">
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Select Target Bed</label>
+                            <select id="bed-select" class="form-select"></select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Patient Name</label>
+                            <input type="text" id="bed-patient" class="form-control" placeholder="e.g. David Kim" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Ward Allocation Status</label>
+                            <select id="bed-status" class="form-select">
+                                <option value="occupied">Occupied (General Ward)</option>
+                                <option value="icu">ICU Critical Priority</option>
+                                <option value="available">Vacate / Mark Available</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 py-2 rounded-3 fw-bold">Update Bed Allocation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 6: Register Blood Donor -->
     <div class="modal fade" id="addDonorModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
@@ -938,7 +1114,7 @@
         </div>
     </div>
 
-    <!-- Modal: Emergency Blood Request -->
+    <!-- MODAL 7: Emergency Blood Request -->
     <div class="modal fade" id="requestBloodModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
@@ -1003,6 +1179,10 @@
                 { token: 'T-104', name: 'John Callahan', dept: 'Orthopedics', wait: '20 mins', status: 'Waiting' },
                 { token: 'T-105', name: 'Amara Singh', dept: 'Pediatrics', wait: '28 mins', status: 'Waiting' }
             ],
+            appointments: [
+                { time: '2025-03-12 10:00', patient: 'Sophia Martinez', doctor: 'Dr. Elena Rostova', spec: 'Cardiology', status: 'Confirmed' },
+                { time: '2025-03-12 11:30', patient: 'Arthur Pendelton', doctor: 'Dr. Robert Lang', spec: 'General Surgery', status: 'In Consultation' }
+            ],
             beds: Array.from({ length: 16 }, (_, i) => ({
                 id: `Bed ${101 + i}`,
                 ward: i < 4 ? 'ICU Ward' : (i < 10 ? 'General Ward' : 'Private Wing'),
@@ -1049,7 +1229,7 @@
             ]
         };
 
-        // LocalStorage Init
+        // LocalStorage Engine
         function loadDB() {
             const data = localStorage.getItem('medi_db');
             return data ? JSON.parse(data) : defaultData;
@@ -1067,6 +1247,42 @@
             }
         }
 
+        // Export All Data to CSV File
+        function exportDataCSV() {
+            const db = loadDB();
+            let csvContent = "data:text/csv;charset=utf-8,Patient ID,Full Name,Age,Gender,Phone,Triage,Status\n";
+            db.patients.forEach(p => {
+                csvContent += `${p.id},"${p.name}",${p.age},${p.gender},"${p.phone}","${p.triage}","${p.status}"\n`;
+            });
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `medi_patients_export_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Voice Queue Audio Synthesis
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 0.95;
+                utterance.pitch = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function announceVoiceQueue() {
+            const db = loadDB();
+            if (db.queue.length > 0) {
+                const current = db.queue[0];
+                speakText(`Attention please. Token ${current.token}, ${current.name}, please proceed to ${current.dept}.`);
+            } else {
+                speakText("Attention please. The queue is currently empty.");
+            }
+        }
+
         // Tab Switching
         function switchTab(tabId) {
             document.querySelectorAll('.tab-section').forEach(el => el.classList.remove('active'));
@@ -1077,297 +1293,26 @@
 
             const titleMap = {
                 dashboard: 'Executive Dashboard', patients: 'Patient Registry & Records',
-                queue: 'Triage & Queue Control', appointments: 'Scheduled Consultations',
-                beds: 'Ward Bed & ICU Matrix', emergency: 'Emergency Room Triage',
-                pharmacy: 'Pharmacy & Drug Inventory', lab: 'Laboratory Diagnostic Orders',
-                blood_bank: 'Blood Bank & Donor Control', ambulance: '3D Ambulance Route Navigation Map',
+                queue: 'Triage & Voice Queue Control', appointments: 'Scheduled Consultations',
+                beds: 'Ward Bed & ICU Allocation', emergency: 'Emergency Room Triage',
+                pharmacy: 'Pharmacy & Inventory', lab: 'Laboratory Diagnostics',
+                blood_bank: 'Blood Bank & Donor Control', ambulance: '3D GPS Ambulance Route Navigation',
                 operating_rooms: 'Operating Theater Control', staff: 'Medical Staff Roster',
                 reports: 'Hospital Reports & Analytics', settings: 'System Settings'
             };
             document.getElementById('page-title').innerText = titleMap[tabId] || 'Medi Hospital Platform';
 
-            if (tabId === 'ambulance') {
-                setTimeout(init3DMap, 200);
-            }
-
-            if (window.innerWidth < 992) {
-                document.getElementById('sidebar').classList.remove('show');
-            }
+            if (tabId === 'ambulance') setTimeout(init3DMap, 200);
+            if (window.innerWidth < 992) document.getElementById('sidebar').classList.remove('show');
         }
 
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('show');
-        }
-
+        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('show'); }
         function openModal(id) {
+            if (id === 'assignBedModal') populateBedSelect();
             new bootstrap.Modal(document.getElementById(id)).show();
         }
 
-        // Blood Bank Actions
-        function addBloodUnit(group) {
-            const db = loadDB();
-            const item = db.bloodBank.find(b => b.group === group);
-            if (item) {
-                item.units += 1;
-                saveDB(db);
-            }
-        }
-
-        function issueBloodUnit(group) {
-            const db = loadDB();
-            const item = db.bloodBank.find(b => b.group === group);
-            if (item && item.units > 0) {
-                item.units -= 1;
-                saveDB(db);
-            } else {
-                alert(`Insufficient stock for Blood Group ${group}!`);
-            }
-        }
-
-        function openRequestForGroup(group) {
-            document.getElementById('req-group').value = group;
-            openModal('requestBloodModal');
-        }
-
-        function saveNewDonor(e) {
-            e.preventDefault();
-            const db = loadDB();
-            if (!db.donors) db.donors = [];
-            const newD = {
-                id: `DNR-${301 + db.donors.length}`,
-                name: document.getElementById('d-name').value,
-                group: document.getElementById('d-group').value,
-                phone: document.getElementById('d-phone').value,
-                lastDonated: document.getElementById('d-date').value || '2024-03-01',
-                status: 'Eligible'
-            };
-            db.donors.unshift(newD);
-            saveDB(db);
-            bootstrap.Modal.getInstance(document.getElementById('addDonorModal')).hide();
-            document.getElementById('formAddDonor').reset();
-            alert(`Donor ${newD.name} registered successfully!`);
-        }
-
-        function submitBloodRequest(e) {
-            e.preventDefault();
-            const group = document.getElementById('req-group').value;
-            const units = parseInt(document.getElementById('req-units').value);
-            const ward = document.getElementById('req-ward').value;
-
-            const db = loadDB();
-            const item = db.bloodBank.find(b => b.group === group);
-            if (item) {
-                if (item.units >= units) {
-                    item.units -= units;
-                    saveDB(db);
-                    bootstrap.Modal.getInstance(document.getElementById('requestBloodModal')).hide();
-                    alert(`✅ Dispatched ${units} units of ${group} blood to ${ward}!`);
-                } else {
-                    alert(`⚠️ Emergency Alert: Only ${item.units} units of ${group} available! Broadcasting urgent donor request.`);
-                    broadcastDonorAlert();
-                }
-            }
-        }
-
-        function broadcastDonorAlert() {
-            alert('🚨 Emergency Donor Alert broadcasted to all active registered blood donors via SMS & Notification!');
-        }
-
-        function callDonor(phone, name) {
-            alert(`📞 Calling Donor ${name} at ${phone}...`);
-        }
-
-        function scheduleDonor(id, name) {
-            alert(`📅 Scheduled donation appointment for ${name} (ID: ${id})`);
-        }
-
-        function sendSMS(phone, name) {
-            alert(`💬 Sent automated SMS appointment invite to ${name} (${phone})`);
-        }
-
-        // Render Tables & Interface
-        function renderAll() {
-            const db = loadDB();
-
-            // Render Dashboard KPI
-            document.getElementById('kpi-total-patients').innerText = db.patients.length;
-            document.getElementById('kpi-queue-count').innerText = db.queue.length;
-            document.getElementById('kpi-er-cases').innerText = db.erCases.length;
-
-            // Render Patients Table
-            const pBody = document.getElementById('patients-table-body');
-            pBody.innerHTML = db.patients.map(p => `
-                <tr>
-                    <td><span class="fw-bold text-primary">${p.id}</span></td>
-                    <td class="fw-semibold">${p.name}</td>
-                    <td>${p.age} / ${p.gender}</td>
-                    <td>${p.phone}</td>
-                    <td><span class="badge bg-info text-dark">${p.triage}</span></td>
-                    <td><span class="badge bg-success">${p.status}</span></td>
-                    <td><button class="btn btn-sm btn-light border" onclick="alert('Viewing record for ${p.name}')"><i class="bi bi-eye"></i></button></td>
-                </tr>
-            `).join('');
-
-            // Render Dash Queue
-            const qBody = document.getElementById('dash-queue-table');
-            qBody.innerHTML = db.queue.slice(0, 4).map(q => `
-                <tr>
-                    <td><span class="token-badge style-token-sm" style="font-size:0.9rem; padding: 2px 8px;">${q.token}</span></td>
-                    <td class="fw-semibold">${q.name}</td>
-                    <td>${q.dept}</td>
-                    <td><span class="badge bg-warning text-dark">${q.wait}</span></td>
-                    <td><span class="badge ${q.status === 'Now Calling' ? 'bg-danger' : 'bg-secondary'}">${q.status}</span></td>
-                </tr>
-            `).join('');
-
-            // Render Full Queue
-            const fqBody = document.getElementById('full-queue-table');
-            fqBody.innerHTML = db.queue.map(q => `
-                <tr>
-                    <td><span class="token-badge style-token-sm" style="font-size:1rem; padding: 3px 10px;">${q.token}</span></td>
-                    <td class="fw-semibold">${q.name}</td>
-                    <td>${q.dept}</td>
-                    <td>${q.wait}</td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-success me-1" onclick="callNextToken()"><i class="bi bi-check-lg"></i></button>
-                    </td>
-                </tr>
-            `).join('');
-
-            // Render Bed Matrix
-            const bedContainer = document.getElementById('bed-grid-container');
-            bedContainer.innerHTML = db.beds.map(b => `
-                <div class="col-6 col-sm-4 col-md-3">
-                    <div class="bed-box bed-${b.status}">
-                        <div class="fw-bold">${b.id}</div>
-                        <small class="d-block opacity-75">${b.ward}</small>
-                        <span class="text-uppercase" style="font-size: 0.68rem;">${b.status}</span>
-                    </div>
-                </div>
-            `).join('');
-
-            // Render Pharmacy
-            document.getElementById('pharmacy-table').innerHTML = db.pharmacy.map(m => `
-                <tr>
-                    <td class="fw-bold">${m.name}</td>
-                    <td>${m.category}</td>
-                    <td class="fw-semibold">${m.stock} units</td>
-                    <td>${m.price}</td>
-                    <td><span class="badge ${m.reorder === 'LOW STOCK' ? 'bg-danger' : 'bg-success'}">${m.reorder}</span></td>
-                    <td><button class="btn btn-sm btn-outline-primary" onclick="alert('Dispensed medicine')">Dispense</button></td>
-                </tr>
-            `).join('');
-
-            // Render ER
-            document.getElementById('er-cases-table').innerHTML = db.erCases.map(e => `
-                <tr>
-                    <td class="fw-bold text-danger">${e.id}</td>
-                    <td class="fw-bold">${e.name}</td>
-                    <td><span class="badge bg-danger">${e.priority}</span></td>
-                    <td>${e.complaint}</td>
-                    <td><span class="badge bg-dark">${e.status}</span></td>
-                </tr>
-            `).join('');
-
-            // Render Blood Bank Cards with Real Operational Buttons
-            document.getElementById('blood-bank-grid').innerHTML = db.bloodBank.map(b => `
-                <div class="col-6 col-md-3">
-                    <div class="card border-0 shadow-sm p-3 text-center rounded-4">
-                        <div class="d-flex justify-content-between align-items-center mb-1">
-                            <span class="badge ${b.units < 10 ? 'bg-danger' : 'bg-success'}">${b.units < 10 ? 'CRITICAL' : 'OK'}</span>
-                            <span class="fw-bold text-secondary small">Group</span>
-                        </div>
-                        <h1 class="fw-extrabold text-danger mb-0">${b.group}</h1>
-                        <h4 class="fw-bold text-dark my-1">${b.units} <small class="fs-6 text-muted">units</small></h4>
-
-                        <div class="btn-group w-100 my-2" role="group">
-                            <button class="btn btn-sm btn-outline-danger" onclick="issueBloodUnit('${b.group}')" title="Issue 1 Unit">- Issue</button>
-                            <button class="btn btn-sm btn-outline-success" onclick="addBloodUnit('${b.group}')" title="Add 1 Unit">+ Add</button>
-                        </div>
-                        <button class="btn btn-sm btn-danger w-100 rounded-3 fw-bold" onclick="openRequestForGroup('${b.group}')">
-                            <i class="bi bi-patch-exclamation me-1"></i> Request ${b.group}
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-
-            // Render Donors Directory with Real Buttons
-            const donors = db.donors || defaultData.donors;
-            document.getElementById('donor-count-badge').innerText = `${donors.length} Donors Registered`;
-            document.getElementById('donors-table-body').innerHTML = donors.map(d => `
-                <tr>
-                    <td class="fw-bold text-primary">${d.id}</td>
-                    <td class="fw-semibold">${d.name}</td>
-                    <td><span class="badge bg-danger fs-6">${d.group}</span></td>
-                    <td>${d.phone}</td>
-                    <td>${d.lastDonated}</td>
-                    <td><span class="badge bg-success">${d.status}</span></td>
-                    <td>
-                        <div class="btn-group btn-group-sm">
-                            <button class="btn btn-outline-success" onclick="callDonor('${d.phone}', '${d.name}')" title="Call Donor">
-                                <i class="bi bi-telephone-fill"></i>
-                            </button>
-                            <button class="btn btn-outline-primary" onclick="scheduleDonor('${d.id}', '${d.name}')" title="Schedule Appointment">
-                                <i class="bi bi-calendar-event"></i>
-                            </button>
-                            <button class="btn btn-outline-info" onclick="sendSMS('${d.phone}', '${d.name}')" title="Send SMS">
-                                <i class="bi bi-chat-text-fill"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            `).join('');
-
-            // Render Lab
-            document.getElementById('lab-table').innerHTML = db.lab.map(l => `
-                <tr>
-                    <td class="fw-bold">${l.id}</td>
-                    <td>${l.name}</td>
-                    <td>${l.test}</td>
-                    <td>${l.doctor}</td>
-                    <td><span class="badge bg-info text-dark">${l.status}</span></td>
-                </tr>
-            `).join('');
-
-            // Render Ambulance Table
-            document.getElementById('ambulance-table').innerHTML = db.ambulances.map(a => `
-                <tr>
-                    <td class="fw-bold text-danger">${a.unit}</td>
-                    <td>${a.driver}</td>
-                    <td><i class="bi bi-geo-alt-fill text-danger me-1"></i> ${a.location}</td>
-                    <td><span class="badge bg-success">${a.status}</span></td>
-                    <td>
-                        <button class="btn btn-sm btn-primary rounded-pill px-3" onclick="switchTab('ambulance')">
-                            <i class="bi bi-compass me-1"></i> Track 3D
-                        </button>
-                    </td>
-                </tr>
-            `).join('');
-
-            // Render OT
-            document.getElementById('ot-table').innerHTML = db.ot.map(o => `
-                <tr>
-                    <td class="fw-bold">${o.room}</td>
-                    <td>${o.surgeon}</td>
-                    <td>${o.procedure}</td>
-                    <td>${o.time}</td>
-                    <td><span class="badge bg-warning text-dark">${o.status}</span></td>
-                </tr>
-            `).join('');
-
-            // Render Staff
-            document.getElementById('staff-table').innerHTML = db.staff.map(s => `
-                <tr>
-                    <td class="fw-bold">${s.name}</td>
-                    <td>${s.role}</td>
-                    <td>${s.dept}</td>
-                    <td>${s.shift}</td>
-                    <td><span class="badge bg-success">${s.status}</span></td>
-                </tr>
-            `).join('');
-        }
-
-        // Actions
+        // Real Functional Handlers
         function saveNewPatient(e) {
             e.preventDefault();
             const db = loadDB();
@@ -1382,10 +1327,110 @@
             };
             db.patients.unshift(newP);
             saveDB(db);
-
             bootstrap.Modal.getInstance(document.getElementById('addPatientModal')).hide();
             document.getElementById('formAddPatient').reset();
-            alert(`Patient ${newP.name} registered successfully!`);
+            alert(`✅ Patient ${newP.name} registered successfully!`);
+        }
+
+        function viewPatient(id) {
+            const db = loadDB();
+            const p = db.patients.find(x => x.id === id);
+            if (!p) return;
+            const content = `
+                <div class="text-center mb-3">
+                    <h4 class="fw-bold text-dark mb-0">${p.name}</h4>
+                    <span class="badge bg-primary fs-6">${p.id}</span>
+                </div>
+                <div class="row g-2 mb-3 text-secondary small">
+                    <div class="col-6"><strong>Age/Gender:</strong> ${p.age} / ${p.gender}</div>
+                    <div class="col-6"><strong>Contact:</strong> ${p.phone}</div>
+                    <div class="col-6"><strong>Triage Level:</strong> ${p.triage}</div>
+                    <div class="col-6"><strong>Current Status:</strong> ${p.status}</div>
+                </div>
+                <hr>
+                <h6 class="fw-bold text-dark mb-2">Vitals & Medical History</h6>
+                <p class="small text-muted mb-0">Blood Pressure: 120/80 mmHg | Heart Rate: 72 bpm | SpO2: 98% | No known severe drug allergies.</p>
+            `;
+            document.getElementById('vp-content').innerHTML = content;
+            openModal('viewPatientModal');
+        }
+
+        function saveNewAppointment(e) {
+            e.preventDefault();
+            const db = loadDB();
+            if (!db.appointments) db.appointments = [];
+            db.appointments.unshift({
+                time: `${document.getElementById('apt-date').value} ${document.getElementById('apt-time').value}`,
+                patient: document.getElementById('apt-patient').value,
+                doctor: document.getElementById('apt-doctor').value,
+                spec: document.getElementById('apt-doctor').value.includes('Cardiology') ? 'Cardiology' : 'General Medicine',
+                status: 'Confirmed'
+            });
+            saveDB(db);
+            bootstrap.Modal.getInstance(document.getElementById('addAppointmentModal')).hide();
+            alert('✅ Consultation appointment booked successfully!');
+        }
+
+        function saveLabOrder(e) {
+            e.preventDefault();
+            const db = loadDB();
+            db.lab.unshift({
+                id: `LAB-${401 + db.lab.length}`,
+                name: document.getElementById('lab-patient').value,
+                test: document.getElementById('lab-test').value,
+                doctor: document.getElementById('lab-doctor').value,
+                status: 'Processing'
+            });
+            saveDB(db);
+            bootstrap.Modal.getInstance(document.getElementById('addLabOrderModal')).hide();
+            alert('✅ Diagnostic test request dispatched to Laboratory!');
+        }
+
+        function populateBedSelect() {
+            const db = loadDB();
+            const select = document.getElementById('bed-select');
+            select.innerHTML = db.beds.map(b => `<option value="${b.id}">${b.id} (${b.ward}) - [Current: ${b.status}]</option>`).join('');
+        }
+
+        function saveBedAssignment(e) {
+            e.preventDefault();
+            const bedId = document.getElementById('bed-select').value;
+            const patient = document.getElementById('bed-patient').value;
+            const status = document.getElementById('bed-status').value;
+
+            const db = loadDB();
+            const bed = db.beds.find(b => b.id === bedId);
+            if (bed) {
+                bed.status = status;
+                saveDB(db);
+                bootstrap.Modal.getInstance(document.getElementById('assignBedModal')).hide();
+                alert(`✅ Bed ${bedId} updated to ${status.toUpperCase()} for ${patient}!`);
+            }
+        }
+
+        function dispenseMedicine(medName) {
+            const db = loadDB();
+            const med = db.pharmacy.find(m => m.name === medName);
+            if (med && med.stock > 0) {
+                med.stock -= 1;
+                saveDB(db);
+                alert(`✅ Dispensed 1 unit of ${medName}. Remaining stock: ${med.stock}`);
+            }
+        }
+
+        function saveERCase(e) {
+            e.preventDefault();
+            const db = loadDB();
+            db.erCases.unshift({
+                id: `ER-${900 + db.erCases.length + 1}`,
+                name: document.getElementById('er-name').value,
+                priority: document.getElementById('er-priority').value,
+                complaint: document.getElementById('er-complaint').value,
+                status: 'Admitted ER'
+            });
+            saveDB(db);
+            document.getElementById('formAddERCase').reset();
+            alert('🚨 Emergency Case Registered!');
         }
 
         function issueNewToken() {
@@ -1409,51 +1454,273 @@
                 document.getElementById('now-serving-token').innerText = called.token;
                 document.getElementById('now-serving-name').innerText = `Patient: ${called.name} (${called.dept})`;
                 saveDB(db);
+                speakText(`Token ${called.token}, ${called.name}, please proceed to ${called.dept}.`);
             } else {
                 alert('No patients in waiting queue!');
             }
         }
 
-        function addERCase() {
-            const name = document.getElementById('er-name').value;
-            if (!name) return alert('Please enter patient name');
+        // Blood Bank Actions
+        function addBloodUnit(group) {
             const db = loadDB();
-            db.erCases.unshift({
-                id: `ER-${900 + db.erCases.length + 1}`,
-                name: name,
-                priority: document.getElementById('er-priority').value,
-                complaint: document.getElementById('er-complaint').value || 'Emergency Intake',
-                status: 'Admitted ER'
-            });
+            const item = db.bloodBank.find(b => b.group === group);
+            if (item) { item.units += 1; saveDB(db); }
+        }
+
+        function issueBloodUnit(group) {
+            const db = loadDB();
+            const item = db.bloodBank.find(b => b.group === group);
+            if (item && item.units > 0) { item.units -= 1; saveDB(db); }
+            else { alert(`Insufficient stock for Blood Group ${group}!`); }
+        }
+
+        function saveNewDonor(e) {
+            e.preventDefault();
+            const db = loadDB();
+            if (!db.donors) db.donors = [];
+            const newD = {
+                id: `DNR-${301 + db.donors.length}`,
+                name: document.getElementById('d-name').value,
+                group: document.getElementById('d-group').value,
+                phone: document.getElementById('d-phone').value,
+                lastDonated: document.getElementById('d-date').value || '2024-03-01',
+                status: 'Eligible'
+            };
+            db.donors.unshift(newD);
             saveDB(db);
-            document.getElementById('er-name').value = '';
-            document.getElementById('er-complaint').value = '';
-            alert('Emergency Case Registered!');
+            bootstrap.Modal.getInstance(document.getElementById('addDonorModal')).hide();
+            alert(`Donor ${newD.name} registered successfully!`);
+        }
+
+        function submitBloodRequest(e) {
+            e.preventDefault();
+            const group = document.getElementById('req-group').value;
+            const units = parseInt(document.getElementById('req-units').value);
+            const ward = document.getElementById('req-ward').value;
+
+            const db = loadDB();
+            const item = db.bloodBank.find(b => b.group === group);
+            if (item) {
+                if (item.units >= units) {
+                    item.units -= units;
+                    saveDB(db);
+                    bootstrap.Modal.getInstance(document.getElementById('requestBloodModal')).hide();
+                    alert(`✅ Dispatched ${units} units of ${group} blood to ${ward}!`);
+                } else {
+                    alert(`⚠️ Emergency Alert: Only ${item.units} units available! Broadcasting request.`);
+                    broadcastDonorAlert();
+                }
+            }
+        }
+
+        function broadcastDonorAlert() { alert('🚨 Emergency Donor Alert broadcasted to all active donors!'); }
+        function callDonor(phone, name) { alert(`📞 Calling ${name} at ${phone}...`); }
+        function scheduleDonor(id, name) { alert(`📅 Scheduled donation appointment for ${name}`); }
+        function sendSMS(phone, name) { alert(`💬 Sent automated SMS invite to ${name} (${phone})`); }
+
+        // Render Tables & Interface
+        function renderAll() {
+            const db = loadDB();
+
+            // Render Dashboard KPI
+            document.getElementById('kpi-total-patients').innerText = db.patients.length;
+            document.getElementById('kpi-queue-count').innerText = db.queue.length;
+            document.getElementById('kpi-er-cases').innerText = db.erCases.length;
+
+            const totalBeds = db.beds.length;
+            const occBeds = db.beds.filter(b => b.status === 'occupied' || b.status === 'icu').length;
+            document.getElementById('kpi-bed-occupancy').innerText = `${Math.round((occBeds / totalBeds) * 100)}%`;
+
+            // Render Patients Table
+            document.getElementById('patients-table-body').innerHTML = db.patients.map(p => `
+                <tr>
+                    <td><span class="fw-bold text-primary">${p.id}</span></td>
+                    <td class="fw-semibold">${p.name}</td>
+                    <td>${p.age} / ${p.gender}</td>
+                    <td>${p.phone}</td>
+                    <td><span class="badge bg-info text-dark">${p.triage}</span></td>
+                    <td><span class="badge bg-success">${p.status}</span></td>
+                    <td><button class="btn btn-sm btn-outline-primary fw-bold" onclick="viewPatient('${p.id}')"><i class="bi bi-eye"></i> View Record</button></td>
+                </tr>
+            `).join('');
+
+            // Render Dash Queue
+            document.getElementById('dash-queue-table').innerHTML = db.queue.slice(0, 4).map(q => `
+                <tr>
+                    <td><span class="token-badge" style="font-size:0.9rem; padding: 2px 8px;">${q.token}</span></td>
+                    <td class="fw-semibold">${q.name}</td>
+                    <td>${q.dept}</td>
+                    <td><span class="badge bg-warning text-dark">${q.wait}</span></td>
+                    <td><span class="badge ${q.status === 'Now Calling' ? 'bg-danger' : 'bg-secondary'}">${q.status}</span></td>
+                </tr>
+            `).join('');
+
+            // Render Full Queue
+            document.getElementById('full-queue-table').innerHTML = db.queue.map(q => `
+                <tr>
+                    <td><span class="token-badge" style="font-size:1rem; padding: 3px 10px;">${q.token}</span></td>
+                    <td class="fw-semibold">${q.name}</td>
+                    <td>${q.dept}</td>
+                    <td>${q.wait}</td>
+                    <td><button class="btn btn-sm btn-success fw-bold me-1" onclick="callNextToken()"><i class="bi bi-megaphone me-1"></i> Call</button></td>
+                </tr>
+            `).join('');
+
+            // Render Appointments
+            const appts = db.appointments || defaultData.appointments;
+            document.getElementById('appointments-table').innerHTML = appts.map(a => `
+                <tr>
+                    <td class="fw-bold">${a.time}</td>
+                    <td>${a.patient}</td>
+                    <td>${a.doctor}</td>
+                    <td>${a.spec}</td>
+                    <td><span class="badge bg-success">${a.status}</span></td>
+                    <td><button class="btn btn-sm btn-outline-primary" onclick="alert('Checking in ${a.patient}')">Check In</button></td>
+                </tr>
+            `).join('');
+
+            // Render Bed Matrix
+            document.getElementById('bed-grid-container').innerHTML = db.beds.map(b => `
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="bed-box bed-${b.status}" onclick="openModal('assignBedModal')">
+                        <div class="fw-bold">${b.id}</div>
+                        <small class="d-block opacity-75">${b.ward}</small>
+                        <span class="text-uppercase" style="font-size: 0.68rem;">${b.status}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Pharmacy
+            document.getElementById('pharmacy-table').innerHTML = db.pharmacy.map(m => `
+                <tr>
+                    <td class="fw-bold">${m.name}</td>
+                    <td>${m.category}</td>
+                    <td class="fw-semibold">${m.stock} units</td>
+                    <td>${m.price}</td>
+                    <td><span class="badge ${m.reorder === 'LOW STOCK' ? 'bg-danger' : 'bg-success'}">${m.reorder}</span></td>
+                    <td><button class="btn btn-sm btn-warning fw-bold" onclick="dispenseMedicine('${m.name}')"><i class="bi bi-capsule me-1"></i> Dispense 1 Unit</button></td>
+                </tr>
+            `).join('');
+
+            // Render ER
+            document.getElementById('er-cases-table').innerHTML = db.erCases.map(e => `
+                <tr>
+                    <td class="fw-bold text-danger">${e.id}</td>
+                    <td class="fw-bold">${e.name}</td>
+                    <td><span class="badge bg-danger">${e.priority}</span></td>
+                    <td>${e.complaint}</td>
+                    <td><span class="badge bg-dark">${e.status}</span></td>
+                    <td><button class="btn btn-sm btn-outline-danger fw-bold" onclick="alert('Dispatched trauma response for ${e.id}')">Trauma Alert</button></td>
+                </tr>
+            `).join('');
+
+            // Render Blood Bank Cards
+            document.getElementById('blood-bank-grid').innerHTML = db.bloodBank.map(b => `
+                <div class="col-6 col-md-3">
+                    <div class="card-glass p-3 text-center">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="badge ${b.units < 10 ? 'bg-danger' : 'bg-success'}">${b.units < 10 ? 'CRITICAL' : 'OK'}</span>
+                            <span class="fw-bold text-secondary small">Group</span>
+                        </div>
+                        <h1 class="fw-extrabold text-danger mb-0">${b.group}</h1>
+                        <h4 class="fw-bold text-dark my-1">${b.units} <small class="fs-6 text-muted">units</small></h4>
+
+                        <div class="btn-group w-100 my-2">
+                            <button class="btn btn-sm btn-outline-danger fw-bold" onclick="issueBloodUnit('${b.group}')">- Issue</button>
+                            <button class="btn btn-sm btn-outline-success fw-bold" onclick="addBloodUnit('${b.group}')">+ Add</button>
+                        </div>
+                        <button class="btn btn-sm btn-danger w-100 rounded-3 fw-bold shadow" onclick="document.getElementById('req-group').value='${b.group}'; openModal('requestBloodModal');">
+                            <i class="bi bi-patch-exclamation me-1"></i> Order ${b.group}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Donors
+            const donors = db.donors || defaultData.donors;
+            document.getElementById('donor-count-badge').innerText = `${donors.length} Donors Active`;
+            document.getElementById('donors-table-body').innerHTML = donors.map(d => `
+                <tr>
+                    <td class="fw-bold text-primary">${d.id}</td>
+                    <td class="fw-semibold">${d.name}</td>
+                    <td><span class="badge bg-danger fs-6">${d.group}</span></td>
+                    <td>${d.phone}</td>
+                    <td>${d.lastDonated}</td>
+                    <td><span class="badge bg-success">${d.status}</span></td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-outline-success" onclick="callDonor('${d.phone}', '${d.name}')"><i class="bi bi-telephone-fill"></i> Call</button>
+                            <button class="btn btn-outline-primary" onclick="scheduleDonor('${d.id}', '${d.name}')"><i class="bi bi-calendar-event"></i> Schedule</button>
+                            <button class="btn btn-outline-info" onclick="sendSMS('${d.phone}', '${d.name}')"><i class="bi bi-chat-text-fill"></i> SMS</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Render Lab
+            document.getElementById('lab-table').innerHTML = db.lab.map(l => `
+                <tr>
+                    <td class="fw-bold">${l.id}</td>
+                    <td>${l.name}</td>
+                    <td>${l.test}</td>
+                    <td>${l.doctor}</td>
+                    <td><span class="badge bg-info text-dark">${l.status}</span></td>
+                    <td><button class="btn btn-sm btn-outline-success" onclick="alert('Result verified for ${l.id}')">Verify Results</button></td>
+                </tr>
+            `).join('');
+
+            // Render Ambulance
+            document.getElementById('ambulance-table').innerHTML = db.ambulances.map(a => `
+                <tr>
+                    <td class="fw-bold text-danger">${a.unit}</td>
+                    <td>${a.driver}</td>
+                    <td><i class="bi bi-geo-alt-fill text-danger me-1"></i> ${a.location}</td>
+                    <td><span class="badge bg-success">${a.status}</span></td>
+                    <td><button class="btn btn-sm btn-primary rounded-pill px-3 fw-bold" onclick="switchTab('ambulance')"><i class="bi bi-compass me-1"></i> 3D GPS Track</button></td>
+                </tr>
+            `).join('');
+
+            // Render OT
+            document.getElementById('ot-table').innerHTML = db.ot.map(o => `
+                <tr>
+                    <td class="fw-bold">${o.room}</td>
+                    <td>${o.surgeon}</td>
+                    <td>${o.procedure}</td>
+                    <td>${o.time}</td>
+                    <td><span class="badge bg-warning text-dark">${o.status}</span></td>
+                    <td><button class="btn btn-sm btn-outline-danger" onclick="alert('Sterilization verified for ${o.room}')">Verify OT</button></td>
+                </tr>
+            `).join('');
+
+            // Render Staff
+            document.getElementById('staff-table').innerHTML = db.staff.map(s => `
+                <tr>
+                    <td class="fw-bold">${s.name}</td>
+                    <td>${s.role}</td>
+                    <td>${s.dept}</td>
+                    <td>${s.shift}</td>
+                    <td><span class="badge bg-success">${s.status}</span></td>
+                    <td><button class="btn btn-sm btn-outline-secondary" onclick="alert('Roster updated for ${s.name}')">Modify Shift</button></td>
+                </tr>
+            `).join('');
         }
 
         function filterPatients() {
             const q = document.getElementById('searchPatients').value.toLowerCase();
             const rows = document.querySelectorAll('#patients-table-body tr');
             rows.forEach(row => {
-                const text = row.innerText.toLowerCase();
-                row.style.display = text.includes(q) ? '' : 'none';
+                row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
             });
         }
 
-        // 3D Map Implementation (MapLibre GL JS)
-        let map3dInstance = null;
-        let ambMarker = null;
+        // 3D Map Implementation
+        let map3dInstance = null, ambMarker = null;
 
         function init3DMap() {
-            if (map3dInstance) {
-                map3dInstance.resize();
-                return;
-            }
-
+            if (map3dInstance) { map3dInstance.resize(); return; }
             const mapContainer = document.getElementById('map3d');
             if (!mapContainer) return;
 
-            // Hospital ER Location (3D coordinates)
             const hospitalLoc = [-73.985130, 40.748817];
             const ambulanceLoc = [-73.992000, 40.738000];
 
@@ -1461,67 +1728,35 @@
                 container: 'map3d',
                 style: {
                     'version': 8,
-                    'sources': {
-                        'raster-tiles': {
-                            'type': 'raster',
-                            'tiles': ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
-                            'tileSize': 256
-                        }
-                    },
-                    'layers': [{
-                        'id': 'simple-tiles',
-                        'type': 'raster',
-                        'source': 'raster-tiles',
-                        'minzoom': 0,
-                        'maxzoom': 19
-                    }]
+                    'sources': { 'raster-tiles': { 'type': 'raster', 'tiles': ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'], 'tileSize': 256 } },
+                    'layers': [{ 'id': 'simple-tiles', 'type': 'raster', 'source': 'raster-tiles', 'minzoom': 0, 'maxzoom': 19 }]
                 },
                 center: [-73.9885, 40.7434],
-                zoom: 14.5,
-                pitch: 60, // 3D Camera Pitch Tilt
-                bearing: -20 // 3D Rotation Bearing
+                zoom: 14.5, pitch: 60, bearing: -20
             });
 
             map3dInstance.addControl(new maplibregl.NavigationControl({ visualizePitch: true }));
 
             map3dInstance.on('load', () => {
-                // Add 3D Route Line
                 map3dInstance.addSource('route', {
                     'type': 'geojson',
                     'data': {
-                        'type': 'Feature',
-                        'properties': {},
-                        'geometry': {
-                            'type': 'LineString',
-                            'coordinates': [
-                                ambulanceLoc,
-                                [-73.9900, 40.7400],
-                                [-73.9870, 40.7440],
-                                hospitalLoc
-                            ]
-                        }
+                        'type': 'Feature', 'properties': {},
+                        'geometry': { 'type': 'LineString', 'coordinates': [ambulanceLoc, [-73.9900, 40.7400], [-73.9870, 40.7440], hospitalLoc] }
                     }
                 });
 
                 map3dInstance.addLayer({
-                    'id': 'route-line',
-                    'type': 'line',
-                    'source': 'route',
+                    'id': 'route-line', 'type': 'line', 'source': 'route',
                     'layout': { 'line-join': 'round', 'line-cap': 'round' },
-                    'paint': {
-                        'line-color': '#dc2626',
-                        'line-width': 6,
-                        'line-opacity': 0.85
-                    }
+                    'paint': { 'line-color': '#dc2626', 'line-width': 6, 'line-opacity': 0.85 }
                 });
 
-                // Destination Marker (Hospital ER)
                 const elHosp = document.createElement('div');
                 elHosp.className = 'badge bg-danger p-2 shadow rounded-circle';
                 elHosp.innerHTML = '<i class="bi bi-hospital fs-4"></i>';
                 new maplibregl.Marker({ element: elHosp }).setLngLat(hospitalLoc).addTo(map3dInstance);
 
-                // Ambulance Marker
                 const elAmb = document.createElement('div');
                 elAmb.className = 'badge bg-warning text-dark p-2 shadow rounded-pill fw-bold';
                 elAmb.innerHTML = '🚑 AMB-01';
@@ -1531,15 +1766,8 @@
 
         function start3DRouteSimulation() {
             if (!map3dInstance || !ambMarker) return init3DMap();
-
             alert('🚑 3D GPS Ambulance Simulation Started! Navigating along optimal fastest route...');
-            const points = [
-                [-73.992000, 40.738000],
-                [-73.990000, 40.740000],
-                [-73.987000, 40.744000],
-                [-73.985130, 40.748817]
-            ];
-
+            const points = [[-73.992000, 40.738000], [-73.990000, 40.740000], [-73.987000, 40.744000], [-73.985130, 40.748817]];
             let step = 0;
             const interval = setInterval(() => {
                 step++;
@@ -1558,15 +1786,13 @@
         }
 
         function activateGreenCorridor() {
-            alert('🚥 Traffic Signal Priority Activated! All 6 intersections on route set to Continuous Green Phase.');
+            alert('🚥 Traffic Signal Priority Activated! Continuous Green Corridor active.');
             document.getElementById('route-status-tag').innerText = 'GREEN CORRIDOR ACTIVE';
             document.getElementById('route-speed').innerText = '82 km/h';
         }
 
         function recenterMap() {
-            if (map3dInstance) {
-                map3dInstance.flyTo({ center: [-73.9885, 40.7434], zoom: 14.5, pitch: 60, bearing: -20 });
-            }
+            if (map3dInstance) map3dInstance.flyTo({ center: [-73.9885, 40.7434], zoom: 14.5, pitch: 60, bearing: -20 });
         }
 
         // Charts Initialization
@@ -1578,8 +1804,8 @@
                     data: {
                         labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                         datasets: [
-                            { label: 'OPD Queue', data: [42, 58, 65, 51, 74, 88, 60], borderColor: '#0284c7', tension: 0.3, fill: false },
-                            { label: 'ER Intake', data: [12, 19, 15, 22, 18, 25, 21], borderColor: '#dc2626', tension: 0.3, fill: false }
+                            { label: 'OPD Queue', data: [42, 58, 65, 51, 74, 88, 60], borderColor: '#0284c7', backgroundColor: 'rgba(2, 132, 199, 0.1)', tension: 0.4, fill: true },
+                            { label: 'ER Intake', data: [12, 19, 15, 22, 18, 25, 21], borderColor: '#dc2626', backgroundColor: 'rgba(220, 38, 38, 0.1)', tension: 0.4, fill: true }
                         ]
                     },
                     options: { responsive: true, maintainAspectRatio: false }
@@ -1623,7 +1849,6 @@
             }
         }
 
-        // Window Load
         window.onload = function() {
             renderAll();
             initCharts();
